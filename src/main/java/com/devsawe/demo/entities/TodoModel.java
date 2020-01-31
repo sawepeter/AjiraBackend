@@ -23,4 +23,28 @@ public class TodoModel extends AuditModel{
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTodotitle() {
+        return todotitle;
+    }
+
+    public void setTodotitle(String todotitle) {
+        this.todotitle = todotitle;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

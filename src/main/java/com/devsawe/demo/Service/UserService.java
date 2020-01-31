@@ -19,4 +19,9 @@ public class UserService {
      user=   this.userRepository.save(user);
      return user;
     }
+
+    public User updateUser(User user){
+        user = this.userRepository.save(user);
+        return user;
+    }
 }

@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface TodoRepository extends JpaRepository<TodoModel, Long> {
     Page<TodoModel> findByUserId(Long userId, Pageable pageable);
-    Optional<TodoModel> findByIdAAndUserId(Long id, Long UserId);
+    Optional<TodoModel> findByIdAndUserId(Long id, Long UserId);
 }
