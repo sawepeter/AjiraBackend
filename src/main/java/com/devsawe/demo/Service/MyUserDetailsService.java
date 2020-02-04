@@ -1,5 +1,6 @@
 package com.devsawe.demo.Service;
 
+import com.devsawe.demo.authentication.CustomUserDetails;
 import com.devsawe.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.devsawe.demo.entities.User user= this.userRepository.findByUsername(username);
-        return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        return new CustomUserDetails(user.getId(),user.getUsername(), user.getPassword(), new ArrayList<>());
     }
 }

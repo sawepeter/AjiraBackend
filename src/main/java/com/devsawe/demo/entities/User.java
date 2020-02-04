@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,15 +17,16 @@ public class User extends AuditModel{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 20)
+    @NotBlank
     @Column(unique = true)
     private String username;
 
-    @JsonIgnore
-    @NotNull
-    @Size(max = 100)
+    @NotBlank
     private String password;
+
+    public Long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
