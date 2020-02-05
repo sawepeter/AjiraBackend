@@ -69,6 +69,7 @@ public class TodoController {
     public ResponseEntity<List<TodoModel>> currentUserToDos() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
+
                         .getAuthentication().getPrincipal();
         List<TodoModel> todoModels = todoRepository.findByUserId(customUserDetails.getId());
         return ResponseEntity.ok(todoModels);
