@@ -20,11 +20,18 @@ public class TodoModel extends AuditModel{
     @Lob
     private String todotitle;
 
+    @NotNull
+    private String todotime;
+
+
+    private String status;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false,insertable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
 
     public Long getId() {
         return id;
@@ -40,6 +47,22 @@ public class TodoModel extends AuditModel{
 
     public void setTodotitle(String todotitle) {
         this.todotitle = todotitle;
+    }
+
+    public String getTodotime() {
+        return todotime;
+    }
+
+    public void setTodotime(String tododate) {
+        this.todotime = tododate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public User getUser() {

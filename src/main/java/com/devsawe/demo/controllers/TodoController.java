@@ -55,13 +55,18 @@ public class TodoController {
         }).orElseThrow(() -> new ResourceNotFoundException("todoId" + todoId + "not found"));
     }
 
-    @DeleteMapping("/users/{userId}/todolist/{todolist}")
-    public ResponseEntity<?> deleteTodoList(@PathVariable(value = "userId") Long userId,
-                                            @PathVariable(value = "todoId") Long todoId) {
-        return todoRepository.findByIdAndUserId(todoId, userId).map(todoModel -> {
+    //delete todo list when user is logged in
+    @DeleteMapping("/my-todos/delete/{id}")
+    public ResponseEntity<?> deleteTodoList(@PathVariable(value = "todoId") Long todoId) {
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();
+        TodoModel todoModel = this.todoRepository.findById(todoId).orElse(null);
+        if (todoModel != null && todoModel.getUserId() == customUserDetails.getId()) {
             todoRepository.delete(todoModel);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("Todo list not found with id " + todoId + " and userId " + userId));
+        }
+
+        return ResponseEntity.noContent().build();
     }
 
     //get the todo list of the current user(logged in)
@@ -69,7 +74,6 @@ public class TodoController {
     public ResponseEntity<List<TodoModel>> currentUserToDos() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
-
                         .getAuthentication().getPrincipal();
         List<TodoModel> todoModels = todoRepository.findByUserId(customUserDetails.getId());
         return ResponseEntity.ok(todoModels);

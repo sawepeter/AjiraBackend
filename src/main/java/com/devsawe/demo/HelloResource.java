@@ -47,8 +47,6 @@ public class HelloResource {
                   .loadUserByUsername(authenticationRequest.getUsername());
           final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-
-
           return ResponseEntity.ok(new AuthenticationResponse(jwt,authenticationRequest.getUsername()));
     }
 }
