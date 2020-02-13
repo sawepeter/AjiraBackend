@@ -51,7 +51,7 @@ public class TodoController {
      /*todoModel1.setId(todoModel.getId());*/
      todoModel1.setTodotitle(todoModel.getTodotitle());
      todoModel1.setTodotime(todoModel.getTodotime());
-     todoModel1.setUserId(customUserDetails.getId());
+    // todoModel1.setUserId(customUserDetails.getId());
      todoRepository.save(todoModel1);
      resp.put("state", "success");
      resp.put("msg", "Todo updated successfully");
@@ -73,12 +73,13 @@ public class TodoController {
         }
 
         todoModel1.setStatus("Completed");
-        todoModel1.setUserId(customUserDetails.getId());
+        //todoModel1.setUserId(customUserDetails.getId());
         todoRepository.save(todoModel1);
         resp.put("state", "success");
         resp.put("msg", "state updated successfully");
         return ResponseEntity.ok(resp);
     }
+
     //get the todo list of the current user(logged in)
     @GetMapping("/my-todos")
     public ResponseEntity<List<TodoModel>> currentUserToDos() {

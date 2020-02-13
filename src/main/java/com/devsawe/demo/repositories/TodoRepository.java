@@ -22,6 +22,12 @@ public interface TodoRepository extends JpaRepository<TodoModel, Long> {
     @Query(value = "SELECT d.* FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)
     List<TodoModel> findByCreatedAt(@Param("id") Long id, @Param("date") String date);
 
+    @Query(value = "SELECT d FROM todo d WHERE d.status = 'pending'", nativeQuery = true)
+    List<TodoModel> findByPendingStatus(@Param("id") Long id);
+
+    @Query(value = "SELECT d FROM todo d WHERE d.status = 'Completed'", nativeQuery = true)
+    List<TodoModel> findByCompletedStatus(@Param("id") Long id);
+
    /* //query for today
     @Query(value = "SELECT todotitle,todotime FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)
     List<Map<String, String>> findByCreatedAt(@Param("id") Long id, @Param("date") String date);*/
