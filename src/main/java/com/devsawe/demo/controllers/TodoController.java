@@ -100,6 +100,26 @@ public class TodoController {
         return ResponseEntity.ok(todoModels);
     }
 
+    //get the todos where status = Completed
+    @GetMapping("/todo-completed")
+    public ResponseEntity<List<TodoModel>> todoCompleted(){
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                    .getAuthentication().getPrincipal();
+        List<TodoModel> todoModels = todoRepository.findByCompletedStatus(customUserDetails.getId());
+        return ResponseEntity.ok(todoModels);
+    }
+
+    //get the todos where status = pending
+    @GetMapping("/todo-pending")
+    public ResponseEntity<List<TodoModel>> todoPending(){
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+        List<TodoModel> todoModels = todoRepository.findByPendingStatus(customUserDetails.getId());
+        return ResponseEntity.ok(todoModels);
+    }
+
     @DeleteMapping("/my-todos/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") long id){
         CustomUserDetails customUserDetails = (CustomUserDetails)
