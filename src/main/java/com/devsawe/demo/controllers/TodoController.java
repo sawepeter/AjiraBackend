@@ -1,12 +1,10 @@
 package com.devsawe.demo.controllers;
 
-import com.devsawe.demo.ResourceNotFoundException;
 import com.devsawe.demo.authentication.CustomUserDetails;
-import com.devsawe.demo.entities.TodoModel;
+import com.devsawe.demo.entities.JobModel;
 import com.devsawe.demo.repositories.TodoRepository;
 import com.devsawe.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,32 +25,32 @@ public class TodoController {
 
     //works creates todo list for the currently logged in user.
     @PostMapping("/users/todos")
-    public TodoModel createTodoList(@Valid @RequestBody TodoModel todoModel) {
+    public JobModel createTodoList(@Valid @RequestBody JobModel jobModel) {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        todoModel.setUserId(customUserDetails.getId());
-        return todoRepository.save(todoModel);
+        jobModel.setUserId(customUserDetails.getId());
+        return todoRepository.save(jobModel);
     }
 
     @PutMapping("my-todos/{id}")
-   public ResponseEntity<?> update(@PathVariable long id, @RequestBody TodoModel todoModel){
+   public ResponseEntity<?> update(@PathVariable long id, @RequestBody JobModel jobModel){
         Map<String, String> resp = new HashMap<>();
      CustomUserDetails customUserDetails = (CustomUserDetails)
         SecurityContextHolder.getContext()
             .getAuthentication().getPrincipal();
-     TodoModel todoModel1 = todoRepository.findById(id).orElse(null);
+     JobModel jobModel1 = todoRepository.findById(id).orElse(null);
 
-     if (todoModel1 == null){
+     if (jobModel1 == null){
          resp.put("state", "danger");
          resp.put("msg", "id not found");
          return ResponseEntity.ok(resp);
      }
      /*todoModel1.setId(todoModel.getId());*/
-     todoModel1.setTodotitle(todoModel.getTodotitle());
-     todoModel1.setTodotime(todoModel.getTodotime());
+     jobModel1.setTodotitle(jobModel.getTodotitle());
+     jobModel1.setTodotime(jobModel.getTodotime());
     // todoModel1.setUserId(customUserDetails.getId());
-     todoRepository.save(todoModel1);
+     todoRepository.save(jobModel1);
      resp.put("state", "success");
      resp.put("msg", "Todo updated successfully");
      return  ResponseEntity.ok(resp);
@@ -64,17 +62,17 @@ public class TodoController {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        TodoModel todoModel1 = todoRepository.findById(id).orElse(null);
+        JobModel jobModel1 = todoRepository.findById(id).orElse(null);
 
-        if (todoModel1 == null){
+        if (jobModel1 == null){
             resp.put("state", "danger");
             resp.put("msg","The user does not a todo with that id");
             return ResponseEntity.ok(resp);
         }
 
-        todoModel1.setStatus("Completed");
+        jobModel1.setStatus("Completed");
         //todoModel1.setUserId(customUserDetails.getId());
-        todoRepository.save(todoModel1);
+        todoRepository.save(jobModel1);
         resp.put("state", "success");
         resp.put("msg", "state updated successfully");
         return ResponseEntity.ok(resp);
@@ -82,42 +80,42 @@ public class TodoController {
 
     //get the todo list of the current user(logged in)
     @GetMapping("/my-todos")
-    public ResponseEntity<List<TodoModel>> currentUserToDos() {
+    public ResponseEntity<List<JobModel>> currentUserToDos() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        List<TodoModel> todoModels = todoRepository.findByUserId(customUserDetails.getId());
-        return ResponseEntity.ok(todoModels);
+        List<JobModel> jobModels = todoRepository.findByUserId(customUserDetails.getId());
+        return ResponseEntity.ok(jobModels);
     }
 
     //get the todotitle by a specific date
     @GetMapping("/today-todos")
-    public ResponseEntity<List<TodoModel>> todayToDos(@RequestParam(value = "date") String date ){
+    public ResponseEntity<List<JobModel>> todayToDos(@RequestParam(value = "date") String date ){
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                     .getAuthentication().getPrincipal();
-        List<TodoModel> todoModels = todoRepository.findByCreatedAt(customUserDetails.getId(),date);
-        return ResponseEntity.ok(todoModels);
+        List<JobModel> jobModels = todoRepository.findByCreatedAt(customUserDetails.getId(),date);
+        return ResponseEntity.ok(jobModels);
     }
 
     //get the todos where status = Completed
     @GetMapping("/todo-completed")
-    public ResponseEntity<List<TodoModel>> todoCompleted(){
+    public ResponseEntity<List<JobModel>> todoCompleted(){
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                     .getAuthentication().getPrincipal();
-        List<TodoModel> todoModels = todoRepository.findByCompletedStatus(customUserDetails.getId());
-        return ResponseEntity.ok(todoModels);
+        List<JobModel> jobModels = todoRepository.findByCompletedStatus(customUserDetails.getId());
+        return ResponseEntity.ok(jobModels);
     }
 
     //get the todos where status = pending
     @GetMapping("/todo-pending")
-    public ResponseEntity<List<TodoModel>> todoPending(){
+    public ResponseEntity<List<JobModel>> todoPending(){
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        List<TodoModel> todoModels = todoRepository.findByPendingStatus(customUserDetails.getId());
-        return ResponseEntity.ok(todoModels);
+        List<JobModel> jobModels = todoRepository.findByPendingStatus(customUserDetails.getId());
+        return ResponseEntity.ok(jobModels);
     }
 
     @DeleteMapping("/my-todos/{id}")
@@ -125,12 +123,12 @@ public class TodoController {
         CustomUserDetails customUserDetails = (CustomUserDetails)
             SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        TodoModel todoModel = todoRepository.findById(id).orElse(null);
+        JobModel jobModel = todoRepository.findById(id).orElse(null);
 
-        if (todoModel == null){
+        if (jobModel == null){
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         }
-        todoRepository.delete(todoModel);
+        todoRepository.delete(jobModel);
         return new ResponseEntity<Void>(HttpStatus.OK);
 
     }
