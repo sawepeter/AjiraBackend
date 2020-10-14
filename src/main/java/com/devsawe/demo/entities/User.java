@@ -19,6 +19,21 @@ public class User extends AuditModel{
     @NotBlank
     private String password;
 
+    @NotBlank
+    private String userType;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     public Long getId() {
         return id;
     }

@@ -15,12 +15,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User registerUser(User user){
-     user=   this.userRepository.save(user);
-     return user;
+    public User registerUser(User user) {
+        user = this.userRepository.save(user);
+        return user;
     }
 
-    public User updateUser(User user){
+    public User updateUser(User user) {
         user = this.userRepository.save(user);
         return user;
     }

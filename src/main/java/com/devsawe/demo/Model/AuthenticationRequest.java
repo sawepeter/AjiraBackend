@@ -1,15 +1,18 @@
 package com.devsawe.demo.Model;
 
 public class AuthenticationRequest {
+
     private String username;
     private String password;
+    private String userType;
 
     public AuthenticationRequest() {
     }
 
-    public AuthenticationRequest(String username, String password) {
+    public AuthenticationRequest(String username, String password, String userType) {
         this.username = username;
         this.password = password;
+        this.userType = userType;
     }
 
     public AuthenticationRequest(String jwt) {
@@ -29,5 +32,13 @@ public class AuthenticationRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

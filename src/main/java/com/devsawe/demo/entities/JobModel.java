@@ -9,12 +9,13 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "jobs")
-public class JobModel extends AuditModel{
+public class JobModel extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_id")
-    private Long userId;
+
+    @Column(name = "employer_id")
+    private Long employerId;
 
     @NotNull
     @Lob
@@ -40,11 +41,26 @@ public class JobModel extends AuditModel{
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "employer_id", nullable = false, insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
 
+    public Long getEmployerId() {
+        return employerId;
+    }
+
+    public void setEmployerId(Long employerId) {
+        this.employerId = employerId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -108,21 +124,5 @@ public class JobModel extends AuditModel{
 
     public void setJobLevel(String jobLevel) {
         this.jobLevel = jobLevel;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 }

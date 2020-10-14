@@ -12,15 +12,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TodoRepository extends JpaRepository<JobModel, Long> {
-    Page<JobModel> findByUserId(Long userId, Pageable pageable);
-    List<JobModel> findByUserId(Long userId);
+public interface JobRepository extends JpaRepository<JobModel, Long> {
+    Page<JobModel> findByEmployerId(Long employerId, Pageable pageable);
+
+    List<JobModel> findByEmployerId(Long employerId);
+
     Optional<JobModel> findByIdAndUserId(Long id, Long UserId);
 
     @Query(value = "SELECT d.* FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)
     List<JobModel> findByCreatedAt(@Param("id") Long id, @Param("date") String date);
 
-    @Query(value = "SELECT d.* FROM todo d WHERE d.status = 'pending' AND d.user_id = :id" , nativeQuery = true)
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.job_location = :location", nativeQuery = true)
+    List<JobModel> findNearbyJobs(@Param("location") String location);
+
+    @Query(value = "SELECT d.* FROM jobs", nativeQuery = true)
+    List<JobModel> findAllJobs();
+
+    @Query(value = "SELECT d.* FROM todo d WHERE d.status = 'pending' AND d.user_id = :id", nativeQuery = true)
     List<JobModel> findByPendingStatus(@Param("id") Long userId);
 
     @Query(value = "SELECT d.* FROM todo d WHERE d.status = 'Completed' AND d.user_id = :id", nativeQuery = true)
