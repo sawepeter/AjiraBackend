@@ -7,7 +7,6 @@ import com.devsawe.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,7 @@ public class JobController {
     private UserRepository userRepository;
 
     //works creates jobs list for the currently logged in user.
-    @PostMapping("/jobs")
+    @PostMapping("/create/jobs")
     public JobModel createJobsList(@Valid @RequestBody JobModel jobModel) {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
@@ -51,6 +50,10 @@ public class JobController {
         jobModel1.setId(jobModel.getId());
         jobModel1.setJobTitle(jobModel.getJobTitle());
         jobModel1.setJobLocation(jobModel.getJobLocation());
+        jobModel1.setCompanyInfo(jobModel.getCompanyInfo());
+        jobModel1.setCompanyName(jobModel.getCompanyName());
+        jobModel1.setQualifications(jobModel.getQualifications());
+        jobModel1.setJobLevel(jobModel.getJobLevel());
         jobModel1.setEmployerId(customUserDetails.getId());
         jobRepository.save(jobModel1);
         resp.put("state", "success");
@@ -68,6 +71,8 @@ public class JobController {
         List<JobModel> jobModels = jobRepository.findByEmployerId(customUserDetails.getId());
         return ResponseEntity.ok(jobModels);
     }
+
+
 
     //get the jobs by a specific location
     @GetMapping("/nearby-jobs")
