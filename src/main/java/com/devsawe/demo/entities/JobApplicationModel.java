@@ -23,6 +23,12 @@ public class JobApplicationModel {
     @NotNull
     private String apply_date;
 
+    @NotNull
+    private String due_date;
+
+    @NotNull
+    private String status;
+
  /*   @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_Id", nullable = false,insertable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -34,6 +40,22 @@ public class JobApplicationModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private JobModel jobModel;
+
+    public String getDue_date() {
+        return due_date;
+    }
+
+    public void setDue_date(String due_date) {
+        this.due_date = due_date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public JobModel getJobModel() {
         return jobModel;

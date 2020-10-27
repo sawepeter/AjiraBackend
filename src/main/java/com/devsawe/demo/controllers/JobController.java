@@ -50,10 +50,10 @@ public class JobController {
         jobModel1.setId(jobModel.getId());
         jobModel1.setJobTitle(jobModel.getJobTitle());
         jobModel1.setJobLocation(jobModel.getJobLocation());
-        jobModel1.setCompanyInfo(jobModel.getCompanyInfo());
-        jobModel1.setCompanyName(jobModel.getCompanyName());
-        jobModel1.setQualifications(jobModel.getQualifications());
-        jobModel1.setJobLevel(jobModel.getJobLevel());
+        jobModel1.setEmployerName(jobModel.getEmployerName());
+        jobModel1.setEmployerPhone(jobModel.getEmployerPhone());
+        jobModel1.setJobAmount(jobModel.getJobAmount());
+        jobModel1.setJobDeadline(jobModel.getJobDeadline());
         jobModel1.setEmployerId(customUserDetails.getId());
         jobRepository.save(jobModel1);
         resp.put("state", "success");

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "skills")
+@Table(name = "worker_profile")
 public class WorkerProfile {
 
     @Id
@@ -27,11 +27,15 @@ public class WorkerProfile {
     @NotNull
     private String skill_name;
 
+    @NotNull
+    private String phone_number;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "worker_id", nullable = false,insertable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
 
     public Long getId() {
         return id;
@@ -71,6 +75,14 @@ public class WorkerProfile {
 
     public void setSkill_name(String skill_name) {
         this.skill_name = skill_name;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public User getUser() {

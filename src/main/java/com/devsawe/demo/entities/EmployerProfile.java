@@ -8,26 +8,27 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "rating")
-public class UserRatingModel {
+@Table(name = "employer_profile")
+public class EmployerProfile {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_Id")
+    @Column(name = "employer_id")
     private Long userId;
 
     @NotNull
-    private float stars;
-
-    @NotNull
-    private String comment;
+    private String location;
 
     @NotNull
     private String employer_name;
 
+    @NotNull
+    private String phone_number;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_Id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "employer_id", nullable = false,insertable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
@@ -48,20 +49,12 @@ public class UserRatingModel {
         this.userId = userId;
     }
 
-    public float getStars() {
-        return stars;
+    public String getLocation() {
+        return location;
     }
 
-    public void setStars(float stars) {
-        this.stars = stars;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getEmployer_name() {
@@ -70,6 +63,14 @@ public class UserRatingModel {
 
     public void setEmployer_name(String employer_name) {
         this.employer_name = employer_name;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public User getUser() {

@@ -25,20 +25,19 @@ public class JobModel extends AuditModel {
     private String jobLocation;
 
     @NotNull
-    private String companyName;
+    private String jobAmount;
 
     @NotNull
-    private String companyInfo;
+    private String employerPhone;
 
     @NotNull
-    private String qualifications;
+    private String employerName;
 
     @NotNull
-    private String salary;
+    private String jobType;
 
     @NotNull
-    private String jobLevel;
-
+    private String jobDeadline;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employer_id", nullable = false, insertable = false, updatable = false)
@@ -46,21 +45,6 @@ public class JobModel extends AuditModel {
     @JsonIgnore
     private User user;
 
-    public Long getEmployerId() {
-        return employerId;
-    }
-
-    public void setEmployerId(Long employerId) {
-        this.employerId = employerId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Long getId() {
         return id;
@@ -68,6 +52,14 @@ public class JobModel extends AuditModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getEmployerId() {
+        return employerId;
+    }
+
+    public void setEmployerId(Long employerId) {
+        this.employerId = employerId;
     }
 
     public String getJobTitle() {
@@ -86,43 +78,51 @@ public class JobModel extends AuditModel {
         this.jobLocation = jobLocation;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getJobAmount() {
+        return jobAmount;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setJobAmount(String jobAmount) {
+        this.jobAmount = jobAmount;
     }
 
-    public String getCompanyInfo() {
-        return companyInfo;
+    public String getEmployerPhone() {
+        return employerPhone;
     }
 
-    public void setCompanyInfo(String companyInfo) {
-        this.companyInfo = companyInfo;
+    public void setEmployerPhone(String employerPhone) {
+        this.employerPhone = employerPhone;
     }
 
-    public String getQualifications() {
-        return qualifications;
+    public String getEmployerName() {
+        return employerName;
     }
 
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
+    public void setEmployerName(String employerName) {
+        this.employerName = employerName;
     }
 
-    public String getSalary() {
-        return salary;
+    public String getJobType() {
+        return jobType;
     }
 
-    public void setSalary(String salary) {
-        this.salary = salary;
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 
-    public String getJobLevel() {
-        return jobLevel;
+    public String getJobDeadline() {
+        return jobDeadline;
     }
 
-    public void setJobLevel(String jobLevel) {
-        this.jobLevel = jobLevel;
+    public void setJobDeadline(String jobDeadline) {
+        this.jobDeadline = jobDeadline;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
