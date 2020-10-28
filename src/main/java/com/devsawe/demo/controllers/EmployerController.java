@@ -24,16 +24,29 @@ public class EmployerController {
 
     //create a worker skills profile
     @PostMapping("/employer/new")
-    public EmployerProfile createEmployerProfile(@Valid @RequestBody EmployerProfile employerProfile) {
+    public ResponseEntity<?> createEmployerProfile(@Valid @RequestBody EmployerProfile employerProfile) {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails customUserDetails =
                 (CustomUserDetails) SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
         employerProfile.setUserId(customUserDetails.getId());
-        return employerRepository.save(employerProfile);
+        //employerProfile.setEmployer_name(customUserDetails.getUserName());
+        String userType = customUserDetails.getUserType();
+        //String username = customUserDetails.getUserName();
+        //check if user is employee here
+        if (userType.equalsIgnoreCase("employer")) {
+
+            employerRepository.save(employerProfile);
+            resp.put("state", "success");
+            resp.put("msg", "Employer Profile Created successfully");
+            return ResponseEntity.ok(resp);
+        }
+        resp.put("state", "Failed");
+        resp.put("msg", "UserType lacks permissions");
+        return ResponseEntity.ok(resp);
     }
 
-    //all users profiles
+    //all employer profiles
     @GetMapping("/employer/profiles")
     public ResponseEntity<List<EmployerProfile>> getEmployerProfiles() {
         List<EmployerProfile> employerProfiles = employerRepository.findAll();

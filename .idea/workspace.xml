@@ -11,11 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1e23398-6150-4250-b34b-87d4faa47e53" name="Default Changelist" comment="&quot;night changes&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/EmployerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/SecurityConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/authentication/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/authentication/CustomUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/WorkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/WorkerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/EmployerProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/EmployerProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/SecurityConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/SecurityConfigurer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/authentication/CustomUserDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/authentication/CustomUserDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/WorkerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/WorkerController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,6 +107,7 @@
       <workItem from="1603700383363" duration="4151000" />
       <workItem from="1603732400474" duration="8914000" />
       <workItem from="1603807566712" duration="71000" />
+      <workItem from="1603868970534" duration="7871000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;night changes&quot;">
       <created>1603804173233</created>
@@ -135,10 +139,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="&quot;night changes&quot;" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser" timestamp="1603803274368">
+    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser" timestamp="1603884742315">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser/42.27.1324.741@42.27.1324.741" timestamp="1603803274368" />
+    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser/42.27.1324.741@42.27.1324.741" timestamp="1603884742315" />
     <state x="42" y="27" width="925" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602576408484">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
@@ -147,54 +151,54 @@
       <screen x="42" y="27" width="1324" height="741" />
     </state>
     <state x="437" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/42.27.1324.741@42.27.1324.741" timestamp="1602600602817" />
-    <state width="1278" height="347" key="GridCell.Tab.0.bottom" timestamp="1603812215907">
+    <state width="1278" height="344" key="GridCell.Tab.0.bottom" timestamp="1603885524973">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.0.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603812215907" />
-    <state width="1278" height="347" key="GridCell.Tab.0.center" timestamp="1603812215905">
+    <state width="1278" height="344" key="GridCell.Tab.0.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="344" key="GridCell.Tab.0.center" timestamp="1603885524972">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.0.center/42.27.1324.741@42.27.1324.741" timestamp="1603812215905" />
-    <state width="1278" height="347" key="GridCell.Tab.0.left" timestamp="1603812215904">
+    <state width="1278" height="344" key="GridCell.Tab.0.center/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
+    <state width="1278" height="344" key="GridCell.Tab.0.left" timestamp="1603885524972">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.0.left/42.27.1324.741@42.27.1324.741" timestamp="1603812215904" />
-    <state width="1278" height="347" key="GridCell.Tab.0.right" timestamp="1603812215906">
+    <state width="1278" height="344" key="GridCell.Tab.0.left/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
+    <state width="1278" height="344" key="GridCell.Tab.0.right" timestamp="1603885524972">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.0.right/42.27.1324.741@42.27.1324.741" timestamp="1603812215906" />
-    <state width="1278" height="347" key="GridCell.Tab.1.bottom" timestamp="1603812215911">
+    <state width="1278" height="344" key="GridCell.Tab.0.right/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
+    <state width="1278" height="344" key="GridCell.Tab.1.bottom" timestamp="1603885524973">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.1.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603812215911" />
-    <state width="1278" height="347" key="GridCell.Tab.1.center" timestamp="1603812215908">
+    <state width="1278" height="344" key="GridCell.Tab.1.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="344" key="GridCell.Tab.1.center" timestamp="1603885524973">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.1.center/42.27.1324.741@42.27.1324.741" timestamp="1603812215908" />
-    <state width="1278" height="347" key="GridCell.Tab.1.left" timestamp="1603812215907">
+    <state width="1278" height="344" key="GridCell.Tab.1.center/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="344" key="GridCell.Tab.1.left" timestamp="1603885524973">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.1.left/42.27.1324.741@42.27.1324.741" timestamp="1603812215907" />
-    <state width="1278" height="347" key="GridCell.Tab.1.right" timestamp="1603812215909">
+    <state width="1278" height="344" key="GridCell.Tab.1.left/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="344" key="GridCell.Tab.1.right" timestamp="1603885524973">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.1.right/42.27.1324.741@42.27.1324.741" timestamp="1603812215909" />
-    <state width="1278" height="347" key="GridCell.Tab.2.bottom" timestamp="1603812215918">
+    <state width="1278" height="344" key="GridCell.Tab.1.right/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="347" key="GridCell.Tab.2.bottom" timestamp="1603885227938">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.2.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603812215918" />
-    <state width="1278" height="347" key="GridCell.Tab.2.center" timestamp="1603812215913">
+    <state width="1278" height="347" key="GridCell.Tab.2.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603885227938" />
+    <state width="1278" height="347" key="GridCell.Tab.2.center" timestamp="1603885227936">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.2.center/42.27.1324.741@42.27.1324.741" timestamp="1603812215913" />
-    <state width="1278" height="347" key="GridCell.Tab.2.left" timestamp="1603812215912">
+    <state width="1278" height="347" key="GridCell.Tab.2.center/42.27.1324.741@42.27.1324.741" timestamp="1603885227936" />
+    <state width="1278" height="347" key="GridCell.Tab.2.left" timestamp="1603885227931">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.2.left/42.27.1324.741@42.27.1324.741" timestamp="1603812215912" />
-    <state width="1278" height="347" key="GridCell.Tab.2.right" timestamp="1603812215915">
+    <state width="1278" height="347" key="GridCell.Tab.2.left/42.27.1324.741@42.27.1324.741" timestamp="1603885227931" />
+    <state width="1278" height="347" key="GridCell.Tab.2.right" timestamp="1603885227937">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="347" key="GridCell.Tab.2.right/42.27.1324.741@42.27.1324.741" timestamp="1603812215915" />
+    <state width="1278" height="347" key="GridCell.Tab.2.right/42.27.1324.741@42.27.1324.741" timestamp="1603885227937" />
     <state x="476" y="177" width="446" height="447" key="chooseDestDirectoryDialog" timestamp="1602745964819">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
@@ -209,8 +213,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/WorkerController.java</url>
-          <line>36</line>
+          <line>38</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

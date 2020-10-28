@@ -38,7 +38,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 "/users",
                 "/nearby-jobs",
                 "/jobs",
-                "/user/profiles",
+                "/employer/profiles",
+                "/worker/profiles",
                 "/employers/register"
         ).permitAll()
                 .anyRequest().authenticated()

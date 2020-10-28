@@ -9,11 +9,13 @@ public class CustomUserDetails extends User {
 
     private Long id;
     private String userType;
+    private String userName;
 
     public CustomUserDetails(Long id, String username, String password,String userType, Collection<? extends GrantedAuthority> authorities) {
         super(username, password,authorities);
         this.id = id;
         this.userType = userType;
+        this.userName = username;
     }
 
     public Long getId() {
@@ -22,5 +24,9 @@ public class CustomUserDetails extends User {
 
     public String getUserType() {
         return userType;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }

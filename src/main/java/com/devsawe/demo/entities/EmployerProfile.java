@@ -27,8 +27,9 @@ public class EmployerProfile {
     @NotNull
     private String phone_number;
 
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "employer_id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "employer_id", nullable = false, insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
