@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface JobRepository extends JpaRepository<JobModel, Long> {
+
     Page<JobModel> findByEmployerId(Long employerId, Pageable pageable);
 
     List<JobModel> findByEmployerId(Long employerId);

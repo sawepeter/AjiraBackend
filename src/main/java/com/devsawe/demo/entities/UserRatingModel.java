@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Entity
 @Table(name = "rating")
@@ -23,7 +24,7 @@ public class UserRatingModel {
     @NotNull
     private String comment;
 
-    @NotNull
+    @Column(name = "employer_name")
     private String employer_name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

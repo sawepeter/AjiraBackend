@@ -14,11 +14,11 @@ public class JobApplicationModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   /* @Column(name = "user_Id")
-    private Long userId;*/
+    @Column(name = "user_Id")
+    private Long userId;
 
-    @Column(name = "job_post_Id")
-    private Long job_post_id;
+    @Column(name = "job_Id")
+    private String job_id;
 
     @NotNull
     private String apply_date;
@@ -29,17 +29,49 @@ public class JobApplicationModel {
     @NotNull
     private String status;
 
- /*   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_Id", nullable = false,insertable = false,updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private User user;*/
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "job_post_Id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "job_Id", nullable = false, insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private JobModel jobModel;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_Id", nullable = false, insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
+
+    public String getApply_date() {
+        return apply_date;
+    }
+
+    public void setApply_date(String apply_date) {
+        this.apply_date = apply_date;
+    }
 
     public String getDue_date() {
         return due_date;
@@ -65,28 +97,11 @@ public class JobApplicationModel {
         this.jobModel = jobModel;
     }
 
-    public Long getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    public Long getJob_post_id() {
-        return job_post_id;
-    }
-
-    public void setJob_post_id(Long job_post_id) {
-        this.job_post_id = job_post_id;
-    }
-
-    public String getApply_date() {
-        return apply_date;
-    }
-
-    public void setApply_date(String apply_date) {
-        this.apply_date = apply_date;
-    }
-
 }
