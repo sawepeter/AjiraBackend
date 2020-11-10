@@ -30,8 +30,8 @@ public interface JobRepository extends JpaRepository<JobModel, Long> {
     @Query(value = "SELECT d.* FROM jobs", nativeQuery = true)
     List<JobModel> findAllJobs();
 
-    @Query(value = "SELECT d.* FROM jobs d WHERE d.status = 'pending' AND d.user_id = :id", nativeQuery = true)
-    List<JobModel> findByPendingStatus(@Param("id") Long userId);
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.status = 'pending'", nativeQuery = true)
+    List<JobModel> findByPendingStatus();
 
     @Query(value = "SELECT d.* FROM jobs d WHERE d.status = 'done'", nativeQuery = true)
     List<JobModel> findByCompletedStatus();

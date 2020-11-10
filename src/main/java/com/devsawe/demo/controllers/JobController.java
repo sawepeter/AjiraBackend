@@ -191,12 +191,12 @@ public class JobController {
     }
 
     //get the todos where status = pending
-    @GetMapping("/todo-pending")
-    public ResponseEntity<List<JobModel>> todoPending() {
+    @GetMapping("/jobs-pending")
+    public ResponseEntity<List<JobModel>> jobsPending() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        List<JobModel> jobModels = jobRepository.findByPendingStatus(customUserDetails.getId());
+        List<JobModel> jobModels = jobRepository.findByPendingStatus();
         return ResponseEntity.ok(jobModels);
     }
 
