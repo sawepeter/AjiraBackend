@@ -4,6 +4,7 @@ import com.devsawe.demo.entities.JobModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -29,11 +30,11 @@ public interface JobRepository extends JpaRepository<JobModel, Long> {
     @Query(value = "SELECT d.* FROM jobs", nativeQuery = true)
     List<JobModel> findAllJobs();
 
-    @Query(value = "SELECT d.* FROM todo d WHERE d.status = 'pending' AND d.user_id = :id", nativeQuery = true)
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.status = 'pending' AND d.user_id = :id", nativeQuery = true)
     List<JobModel> findByPendingStatus(@Param("id") Long userId);
 
-    @Query(value = "SELECT d.* FROM todo d WHERE d.status = 'Completed' AND d.user_id = :id", nativeQuery = true)
-    List<JobModel> findByCompletedStatus(@Param("id") Long UserId);
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.status = 'done'", nativeQuery = true)
+    List<JobModel> findByCompletedStatus();
 
    /* //query for today
     @Query(value = "SELECT todotitle,todotime FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)

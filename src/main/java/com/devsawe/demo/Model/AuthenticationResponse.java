@@ -5,7 +5,6 @@ public class AuthenticationResponse {
     private final String username;
     private  String userType;
 
-
     public AuthenticationResponse(String jwt, String username, String userType) {
         this.jwt = jwt;
         this.username = username;

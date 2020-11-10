@@ -12,14 +12,30 @@
   <component name="ChangeListManager">
     <list default="true" id="a1e23398-6150-4250-b34b-87d4faa47e53" name="Default Changelist" comment="&quot;night changes&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/HelloResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/HelloResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/Model/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/Model/AuthenticationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/Model/AuthenticationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/Model/AuthenticationResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/SecurityConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/authentication/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/authentication/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/WorkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/WorkerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/EmployerProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/EmployerProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/JobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/JobController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/JobModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/entities/JobModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/ApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/ApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/JobRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/JobRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/devsawe/demo/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/HelloResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/HelloResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/Model/AuthenticationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/Model/AuthenticationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/Model/AuthenticationResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/Model/AuthenticationResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/SecurityConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/SecurityConfigurer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/authentication/CustomUserDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/authentication/CustomUserDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/WorkerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/WorkerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/JobController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/JobController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/RatingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/RatingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/entities/JobModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/entities/JobModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/repositories/ApplicationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/repositories/ApplicationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/devsawe/demo/repositories/JobRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/devsawe/demo/repositories/JobRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.devsawe.demo.JwtExampleApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.devsawe.demo.JwtExampleApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.devsawe.demo.JwtExampleApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.devsawe.demo.JwtExampleApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,6 +66,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -107,7 +124,18 @@
       <workItem from="1603700383363" duration="4151000" />
       <workItem from="1603732400474" duration="8914000" />
       <workItem from="1603807566712" duration="71000" />
-      <workItem from="1603868970534" duration="7871000" />
+      <workItem from="1603868970534" duration="17506000" />
+      <workItem from="1604300435691" duration="1200000" />
+      <workItem from="1604388602642" duration="1878000" />
+      <workItem from="1604479489533" duration="7681000" />
+      <workItem from="1604547927853" duration="10300000" />
+      <workItem from="1604647871580" duration="11800000" />
+      <workItem from="1604902385271" duration="482000" />
+      <workItem from="1604918840805" duration="292000" />
+      <workItem from="1604924594395" duration="119000" />
+      <workItem from="1604925555333" duration="145000" />
+      <workItem from="1604950490487" duration="12271000" />
+      <workItem from="1604964770275" duration="4481000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;night changes&quot;">
       <created>1603804173233</created>
@@ -116,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603804173233</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;night changes&quot;">
+      <created>1603885985311</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603885985311</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,10 +174,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="&quot;night changes&quot;" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser" timestamp="1603884742315">
+    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser" timestamp="1604967210767">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser/42.27.1324.741@42.27.1324.741" timestamp="1603884742315" />
+    <state x="512" y="84" width="374" height="633" key="#com.intellij.ide.util.MemberChooser/42.27.1324.741@42.27.1324.741" timestamp="1604967210767" />
     <state x="42" y="27" width="925" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602576408484">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
@@ -151,38 +186,42 @@
       <screen x="42" y="27" width="1324" height="741" />
     </state>
     <state x="437" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/42.27.1324.741@42.27.1324.741" timestamp="1602600602817" />
-    <state width="1278" height="344" key="GridCell.Tab.0.bottom" timestamp="1603885524973">
+    <state x="487" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1604963613029">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.0.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
-    <state width="1278" height="344" key="GridCell.Tab.0.center" timestamp="1603885524972">
+    <state x="487" y="155" width="424" height="491" key="FileChooserDialogImpl/42.27.1324.741@42.27.1324.741" timestamp="1604963613029" />
+    <state width="1278" height="398" key="GridCell.Tab.0.bottom" timestamp="1604969178567">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.0.center/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
-    <state width="1278" height="344" key="GridCell.Tab.0.left" timestamp="1603885524972">
+    <state width="1278" height="398" key="GridCell.Tab.0.bottom/42.27.1324.741@42.27.1324.741" timestamp="1604969178567" />
+    <state width="1278" height="398" key="GridCell.Tab.0.center" timestamp="1604969178565">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.0.left/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
-    <state width="1278" height="344" key="GridCell.Tab.0.right" timestamp="1603885524972">
+    <state width="1278" height="398" key="GridCell.Tab.0.center/42.27.1324.741@42.27.1324.741" timestamp="1604969178565" />
+    <state width="1278" height="398" key="GridCell.Tab.0.left" timestamp="1604969178552">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.0.right/42.27.1324.741@42.27.1324.741" timestamp="1603885524972" />
-    <state width="1278" height="344" key="GridCell.Tab.1.bottom" timestamp="1603885524973">
+    <state width="1278" height="398" key="GridCell.Tab.0.left/42.27.1324.741@42.27.1324.741" timestamp="1604969178552" />
+    <state width="1278" height="398" key="GridCell.Tab.0.right" timestamp="1604969178566">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.1.bottom/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
-    <state width="1278" height="344" key="GridCell.Tab.1.center" timestamp="1603885524973">
+    <state width="1278" height="398" key="GridCell.Tab.0.right/42.27.1324.741@42.27.1324.741" timestamp="1604969178566" />
+    <state width="1278" height="398" key="GridCell.Tab.1.bottom" timestamp="1604969178568">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.1.center/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
-    <state width="1278" height="344" key="GridCell.Tab.1.left" timestamp="1603885524973">
+    <state width="1278" height="398" key="GridCell.Tab.1.bottom/42.27.1324.741@42.27.1324.741" timestamp="1604969178568" />
+    <state width="1278" height="398" key="GridCell.Tab.1.center" timestamp="1604969178567">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.1.left/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
-    <state width="1278" height="344" key="GridCell.Tab.1.right" timestamp="1603885524973">
+    <state width="1278" height="398" key="GridCell.Tab.1.center/42.27.1324.741@42.27.1324.741" timestamp="1604969178567" />
+    <state width="1278" height="398" key="GridCell.Tab.1.left" timestamp="1604969178567">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state width="1278" height="344" key="GridCell.Tab.1.right/42.27.1324.741@42.27.1324.741" timestamp="1603885524973" />
+    <state width="1278" height="398" key="GridCell.Tab.1.left/42.27.1324.741@42.27.1324.741" timestamp="1604969178567" />
+    <state width="1278" height="398" key="GridCell.Tab.1.right" timestamp="1604969178567">
+      <screen x="42" y="27" width="1324" height="741" />
+    </state>
+    <state width="1278" height="398" key="GridCell.Tab.1.right/42.27.1324.741@42.27.1324.741" timestamp="1604969178567" />
     <state width="1278" height="347" key="GridCell.Tab.2.bottom" timestamp="1603885227938">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
@@ -203,10 +242,10 @@
       <screen x="42" y="27" width="1324" height="741" />
     </state>
     <state x="476" y="177" width="446" height="447" key="chooseDestDirectoryDialog/42.27.1324.741@42.27.1324.741" timestamp="1602745964819" />
-    <state x="367" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1602672661725">
+    <state x="367" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1604959277986">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
-    <state x="367" y="89" width="672" height="678" key="search.everywhere.popup/42.27.1324.741@42.27.1324.741" timestamp="1602672661725" />
+    <state x="367" y="89" width="672" height="678" key="search.everywhere.popup/42.27.1324.741@42.27.1324.741" timestamp="1604959277986" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -218,7 +257,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/devsawe/demo/controllers/EmployerController.java</url>
-          <line>34</line>
+          <line>33</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

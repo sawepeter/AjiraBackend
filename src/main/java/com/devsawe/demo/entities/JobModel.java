@@ -36,6 +36,8 @@ public class JobModel extends AuditModel {
     @NotNull
     private String jobType;
 
+    private String status;
+
     @NotNull
     private String jobDeadline;
 
@@ -45,6 +47,13 @@ public class JobModel extends AuditModel {
     @JsonIgnore
     private User user;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;

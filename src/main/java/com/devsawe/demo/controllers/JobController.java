@@ -37,6 +37,7 @@ public class JobController {
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
         jobModel.setEmployerId(customUserDetails.getId());
+        jobModel.setStatus("pending");
         //check if user is employee here
         if (customUserDetails.getUserType().equalsIgnoreCase("employer")) {
 
@@ -70,14 +71,13 @@ public class JobController {
         return ResponseEntity.ok(resp);
     }
 
-    @PutMapping("my-jobs/{id}")
+    @PutMapping("my-jobs{id}")
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody JobModel jobModel) {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
         JobModel jobModel1 = jobRepository.findById(id).orElse(null);
-
         if (jobModel1 == null) {
             resp.put("state", "danger");
             resp.put("msg", "id not found");
@@ -94,6 +94,46 @@ public class JobController {
         jobRepository.save(jobModel1);
         resp.put("state", "success");
         resp.put("msg", "Job updated successfully");
+        return ResponseEntity.ok(resp);
+    }
+
+    @PutMapping("my-jobs/completed/{id}")
+    public ResponseEntity<?> completed(@PathVariable long id) {
+        Map<String, String> resp = new HashMap<>();
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();
+        JobApplicationModel applicationModel = applicationRepository.findById(id).orElse(null);
+        if (applicationModel == null) {
+            resp.put("state", "danger");
+            resp.put("msg", "The user does not a applications with that id");
+            return ResponseEntity.ok(resp);
+        }
+        applicationModel.setStatus("Completed");
+        applicationModel.setUserId(customUserDetails.getId());
+        applicationRepository.save(applicationModel);
+        resp.put("state", "success");
+        resp.put("msg", "state updated successfully");
+        return ResponseEntity.ok(resp);
+    }
+
+    @PutMapping("my-jobs/status/{id}")
+    public ResponseEntity<?> visibleJob(@PathVariable long id) {
+        Map<String, String> resp = new HashMap<>();
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();
+        JobModel jobModel = jobRepository.findById(id).orElse(null);
+        if (jobModel == null) {
+            resp.put("state", "danger");
+            resp.put("msg", "No job found with that id");
+            return ResponseEntity.ok(resp);
+        }
+        jobModel.setStatus("done");
+        //jobModel.setEmployerId(customUserDetails.getId());
+        jobRepository.save(jobModel);
+        resp.put("state", "success");
+        resp.put("msg", "state updated successfully");
         return ResponseEntity.ok(resp);
     }
 
@@ -124,6 +164,14 @@ public class JobController {
         return ResponseEntity.ok(jobApplicationModels);
     }
 
+    //get the jobs that have already been marked as complete
+    @GetMapping("/jobs/complete")
+    public ResponseEntity<List<JobApplicationModel>> getComplete() {
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<JobApplicationModel> jobApplicationModels = applicationRepository.findByCompletedStatus(customUserDetails.getId());
+        return ResponseEntity.ok(jobApplicationModels);
+    }
 
     //get jobs
     @GetMapping("/jobs")
@@ -132,13 +180,13 @@ public class JobController {
         return ResponseEntity.ok(jobModels);
     }
 
-    //get the todos where status = Completed
-    @GetMapping("/todo-completed")
-    public ResponseEntity<List<JobModel>> todoCompleted() {
+    //get the jobs where status = done
+    @GetMapping("/jobs-done")
+    public ResponseEntity<List<JobModel>> jobsApproved() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        List<JobModel> jobModels = jobRepository.findByCompletedStatus(customUserDetails.getId());
+        List<JobModel> jobModels = jobRepository.findByCompletedStatus();
         return ResponseEntity.ok(jobModels);
     }
 
