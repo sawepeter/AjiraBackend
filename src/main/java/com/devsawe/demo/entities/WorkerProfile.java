@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "worker_profile")
@@ -16,7 +17,7 @@ public class WorkerProfile {
     private Long id;
 
     @Column(name = "worker_id")
-    private Long userId;
+    private Long workerId;
 
     @NotNull
     private String location;
@@ -36,6 +37,30 @@ public class WorkerProfile {
     @JsonIgnore
     private User user;
 
+    @OneToMany(mappedBy = "workerprofile", fetch = FetchType.LAZY)
+    private Set<UserRatingModel> reviews;
+
+    public WorkerProfile(Long workerId) {
+    }
+
+    public WorkerProfile(Long id, Long workerId, @NotNull String location, @NotNull String age, @NotNull String skill_name, @NotNull String phone_number, User user, Set<UserRatingModel> reviews) {
+        this.id = id;
+        this.workerId = workerId;
+        this.location = location;
+        this.age = age;
+        this.skill_name = skill_name;
+        this.phone_number = phone_number;
+        this.user = user;
+        this.reviews = reviews;
+    }
+
+    public Set<UserRatingModel> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<UserRatingModel> reviews) {
+        this.reviews = reviews;
+    }
 
     public Long getId() {
         return id;
@@ -45,12 +70,12 @@ public class WorkerProfile {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getWorkerId() {
+        return workerId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
     }
 
     public String getLocation() {

@@ -1,12 +1,12 @@
 package com.devsawe.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Value;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Optional;
 
 @Entity
 @Table(name = "rating")
@@ -15,23 +15,54 @@ public class UserRatingModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_Id")
-    private Long userId;
+
+    @Column(name = "worker_id")
+    private Long workerId;
+
+    @ManyToOne(optional = false)
+    private WorkerProfile workerProfile;
 
     @NotNull
-    private float stars;
+    private Double rating;
 
     @NotNull
-    private String comment;
-
-    @Column(name = "employer_name")
-    private String employer_name;
+    private String review;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_Id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "worker_id", nullable = false,insertable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private User user;
+    private User user1;
+
+
+
+    public UserRatingModel() {
+    }
+
+    public UserRatingModel(Long id, Long workerId, WorkerProfile workerProfile, @NotNull Double rating, @NotNull String review, User user1) {
+        this.id = id;
+        this.workerId = workerId;
+        this.workerProfile = workerProfile;
+        this.rating = rating;
+        this.review = review;
+        this.user1 = user1;
+    }
+
+    public Long getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
+    }
+
+    public User getUser1() {
+        return user1;
+    }
+
+    public void setUser1(User user1) {
+        this.user1 = user1;
+    }
 
     public Long getId() {
         return id;
@@ -41,43 +72,28 @@ public class UserRatingModel {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public WorkerProfile getWorkerProfile() {
+        return workerProfile;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setWorkerProfile(WorkerProfile workerProfile) {
+        this.workerProfile = workerProfile;
     }
 
-    public float getStars() {
-        return stars;
+    public Double getRating() {
+        return rating;
     }
 
-    public void setStars(float stars) {
-        this.stars = stars;
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
-    public String getComment() {
-        return comment;
+    public String getReview() {
+        return review;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setReview(String review) {
+        this.review = review;
     }
 
-    public String getEmployer_name() {
-        return employer_name;
-    }
-
-    public void setEmployer_name(String employer_name) {
-        this.employer_name = employer_name;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

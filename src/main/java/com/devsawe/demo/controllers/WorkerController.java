@@ -35,7 +35,7 @@ public class WorkerController {
         CustomUserDetails  customUserDetails =
                 (CustomUserDetails) SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        workerProfile.setUserId(customUserDetails.getId());
+        workerProfile.setWorkerId(customUserDetails.getId());
         String userType = customUserDetails.getUserType();
         //check if user is employee here
         if (userType.equalsIgnoreCase("employee")) {

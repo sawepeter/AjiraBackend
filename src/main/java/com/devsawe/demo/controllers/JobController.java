@@ -40,7 +40,6 @@ public class JobController {
         jobModel.setStatus("pending");
         //check if user is employee here
         if (customUserDetails.getUserType().equalsIgnoreCase("employer")) {
-
             jobRepository.save(jobModel);
             resp.put("state", "success");
             resp.put("msg", "Job created successfully");
