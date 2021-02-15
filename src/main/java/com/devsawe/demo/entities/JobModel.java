@@ -30,7 +30,6 @@ public class JobModel extends AuditModel {
     @NotNull
     private String employerPhone;
 
-    @NotNull
     private String employerName;
 
     @NotNull
@@ -41,11 +40,31 @@ public class JobModel extends AuditModel {
     @NotNull
     private String jobDeadline;
 
+    private String payment_status;
+
+    private String favourite;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employer_id", nullable = false, insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
+    public String getFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(String favourite) {
+        this.favourite = favourite;
+    }
+
+    public String getPayment_status() {
+        return payment_status;
+    }
+
+    public void setPayment_status(String payment_status) {
+        this.payment_status = payment_status;
+    }
 
     public String getStatus() {
         return status;

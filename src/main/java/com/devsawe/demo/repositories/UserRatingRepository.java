@@ -13,8 +13,4 @@ public interface UserRatingRepository extends JpaRepository<UserRatingModel, Lon
 
     List<UserRatingModel> findByUserId(Long userId);
 
-    List<UserRatingModel> findByEmployerId(Long EmployerId);
-
-    List<UserRatingModel> findByUserIdAAndEmployerId(User user, String employerId);
-
 }

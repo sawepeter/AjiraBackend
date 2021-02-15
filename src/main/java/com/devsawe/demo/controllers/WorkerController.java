@@ -29,13 +29,13 @@ public class WorkerController {
 
 
     //create a worker skills profile
-    @PostMapping("/workers/new")
+    @PostMapping("/employee/new")
     public ResponseEntity<?> createWorkerProfile(@Valid @RequestBody WorkerProfile workerProfile) {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails  customUserDetails =
                 (CustomUserDetails) SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        workerProfile.setWorkerId(customUserDetails.getId());
+        workerProfile.setUserId(customUserDetails.getId());
         String userType = customUserDetails.getUserType();
         //check if user is employee here
         if (userType.equalsIgnoreCase("employee")) {

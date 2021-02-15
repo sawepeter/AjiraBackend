@@ -17,7 +17,7 @@ public class WorkerProfile {
     private Long id;
 
     @Column(name = "worker_id")
-    private Long workerId;
+    private Long userId;
 
     @NotNull
     private String location;
@@ -37,31 +37,6 @@ public class WorkerProfile {
     @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "workerprofile", fetch = FetchType.LAZY)
-    private Set<UserRatingModel> reviews;
-
-    public WorkerProfile(Long workerId) {
-    }
-
-    public WorkerProfile(Long id, Long workerId, @NotNull String location, @NotNull String age, @NotNull String skill_name, @NotNull String phone_number, User user, Set<UserRatingModel> reviews) {
-        this.id = id;
-        this.workerId = workerId;
-        this.location = location;
-        this.age = age;
-        this.skill_name = skill_name;
-        this.phone_number = phone_number;
-        this.user = user;
-        this.reviews = reviews;
-    }
-
-    public Set<UserRatingModel> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<UserRatingModel> reviews) {
-        this.reviews = reviews;
-    }
-
     public Long getId() {
         return id;
     }
@@ -70,12 +45,12 @@ public class WorkerProfile {
         this.id = id;
     }
 
-    public Long getWorkerId() {
-        return workerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setWorkerId(Long workerId) {
-        this.workerId = workerId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getLocation() {

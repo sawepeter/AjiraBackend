@@ -30,7 +30,7 @@ public class RatingController {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        userRatingModel.setWorkerId(customUserDetails.getId());
+        userRatingModel.setUserId(customUserDetails.getId());
         if (customUserDetails.getUserType().equalsIgnoreCase("employer")) {
             userRatingRepository.save(userRatingModel);
             resp.put("state", "success");

@@ -17,16 +17,14 @@ public class UserRatingModel {
 
 
     @Column(name = "worker_id")
-    private Long workerId;
-
-    @ManyToOne(optional = false)
-    private WorkerProfile workerProfile;
+    private Long userId;
 
     @NotNull
     private Double rating;
 
     @NotNull
-    private String review;
+    private String Comment;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "worker_id", nullable = false,insertable = false,updatable = false)
@@ -34,26 +32,20 @@ public class UserRatingModel {
     @JsonIgnore
     private User user1;
 
-
-
-    public UserRatingModel() {
+    public String getComment() {
+        return Comment;
     }
 
-    public UserRatingModel(Long id, Long workerId, WorkerProfile workerProfile, @NotNull Double rating, @NotNull String review, User user1) {
-        this.id = id;
-        this.workerId = workerId;
-        this.workerProfile = workerProfile;
-        this.rating = rating;
-        this.review = review;
-        this.user1 = user1;
+    public void setComment(String comment) {
+        Comment = comment;
     }
 
-    public Long getWorkerId() {
-        return workerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setWorkerId(Long workerId) {
-        this.workerId = workerId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public User getUser1() {
@@ -72,14 +64,6 @@ public class UserRatingModel {
         this.id = id;
     }
 
-    public WorkerProfile getWorkerProfile() {
-        return workerProfile;
-    }
-
-    public void setWorkerProfile(WorkerProfile workerProfile) {
-        this.workerProfile = workerProfile;
-    }
-
     public Double getRating() {
         return rating;
     }
@@ -88,12 +72,5 @@ public class UserRatingModel {
         this.rating = rating;
     }
 
-    public String getReview() {
-        return review;
-    }
-
-    public void setReview(String review) {
-        this.review = review;
-    }
 
 }

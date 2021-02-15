@@ -21,11 +21,37 @@ public interface JobRepository extends JpaRepository<JobModel, Long> {
 
     Optional<JobModel> findByIdAndUserId(Long id, Long UserId);
 
+    //get the count of paid jobs
+    @Query(value = "SELECT COUNT(d.id) FROM jobs d WHERE d.payment_status = 'paid'", nativeQuery = true)
+    long countByPaid();
+
+    //get the count of unpaid jobs
+    @Query(value = "SELECT COUNT(d.id) FROM jobs d WHERE d.payment_status = 'unpaid'", nativeQuery = true)
+    long countByUnPaid();
+
+    //get the count of all jobs
+    @Query(value = "SELECT COUNT(id) FROM jobs", nativeQuery = true)
+    long countAllBy();
+
+    //get the count of all employees
+    @Query(value = "SELECT COUNT(id) FROM worker_profile", nativeQuery = true)
+    long countByEmployee();
+
+    //get the count of all employers
+    @Query(value = "SELECT COUNT(id) FROM employer_profile", nativeQuery = true)
+    long countByEmployer();
+
     @Query(value = "SELECT d.* FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)
     List<JobModel> findByCreatedAt(@Param("id") Long id, @Param("date") String date);
 
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.favourite = :favourite AND d.employer_id = :employer_id", nativeQuery = true)
+    List<JobModel> findFavouriteJobs(@Param("favourite") String favourite, @Param("employer_id") Long employer_id);
+
     @Query(value = "SELECT d.* FROM jobs d WHERE d.job_location = :location", nativeQuery = true)
     List<JobModel> findNearbyJobs(@Param("location") String location);
+
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.payment_status = :payment_status", nativeQuery = true)
+    List<JobModel> findPaidJobs(@Param("payment_status") String payment_status);
 
     @Query(value = "SELECT d.* FROM jobs", nativeQuery = true)
     List<JobModel> findAllJobs();

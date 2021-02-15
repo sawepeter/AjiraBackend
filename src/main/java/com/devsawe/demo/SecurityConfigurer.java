@@ -43,7 +43,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 "/employers/register",
                 "/my-jobs/status/*",
                 "/jobs-pending",
-                "/jobs-done"
+                "/jobs-done",
+                "/paid-jobs"
         ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
