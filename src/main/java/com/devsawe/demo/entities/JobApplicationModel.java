@@ -3,6 +3,7 @@ package com.devsawe.demo.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,14 +21,11 @@ public class JobApplicationModel {
     @Column(name = "job_Id")
     private String job_id;
 
-    @NotNull
+    private String worker_name;
+
+    private String application_status;
+
     private String apply_date;
-
-    @NotNull
-    private String due_date;
-
-    @NotNull
-    private String status;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "job_Id", nullable = false, insertable = false, updatable = false)
@@ -40,6 +38,30 @@ public class JobApplicationModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
+    public String getApply_date() {
+        return apply_date;
+    }
+
+    public void setApply_date(String apply_date) {
+        this.apply_date = apply_date;
+    }
+
+    public String getApplication_status() {
+        return application_status;
+    }
+
+    public void setApplication_status(String application_status) {
+        this.application_status = application_status;
+    }
+
+    public String getWorker_name() {
+        return worker_name;
+    }
+
+    public void setWorker_name(String worker_name) {
+        this.worker_name = worker_name;
+    }
 
     public Long getId() {
         return id;
@@ -63,30 +85,6 @@ public class JobApplicationModel {
 
     public void setJob_id(String job_id) {
         this.job_id = job_id;
-    }
-
-    public String getApply_date() {
-        return apply_date;
-    }
-
-    public void setApply_date(String apply_date) {
-        this.apply_date = apply_date;
-    }
-
-    public String getDue_date() {
-        return due_date;
-    }
-
-    public void setDue_date(String due_date) {
-        this.due_date = due_date;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public JobModel getJobModel() {

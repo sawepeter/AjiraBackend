@@ -25,20 +25,28 @@ public interface JobRepository extends JpaRepository<JobModel, Long> {
     @Query(value = "SELECT COUNT(d.id) FROM jobs d WHERE d.payment_status = 'paid'", nativeQuery = true)
     long countByPaid();
 
+    //get the total earnings of a particular worker
+    @Query(value = "SELECT SUM(m.earnings) FROM earnings m WHERE m.worker_id = :worker_id", nativeQuery = true)
+    double totalEarnings(@Param("worker_id") Long worker_id);
+
     //get the count of unpaid jobs
     @Query(value = "SELECT COUNT(d.id) FROM jobs d WHERE d.payment_status = 'unpaid'", nativeQuery = true)
     long countByUnPaid();
+
+    //get the average rating of a Worker
+    @Query(value = "SELECT AVG(r.rating) FROM rating r WHERE r.worker_id = :worker_id", nativeQuery = true)
+    double averageRating(@Param("worker_id") String worker_id);
 
     //get the count of all jobs
     @Query(value = "SELECT COUNT(id) FROM jobs", nativeQuery = true)
     long countAllBy();
 
     //get the count of all employees
-    @Query(value = "SELECT COUNT(id) FROM worker_profile", nativeQuery = true)
+    @Query(value = "SELECT COUNT(id) FROM users  u WHERE u.user_type = 'employee'", nativeQuery = true)
     long countByEmployee();
 
     //get the count of all employers
-    @Query(value = "SELECT COUNT(id) FROM employer_profile", nativeQuery = true)
+    @Query(value = "SELECT COUNT(id) FROM users u WHERE u.user_type = 'employer'", nativeQuery = true)
     long countByEmployer();
 
     @Query(value = "SELECT d.* FROM todo d WHERE DATE_FORMAT(d.created_at, '%Y-%m-%d') = :date AND d.user_id = :id", nativeQuery = true)
@@ -50,8 +58,8 @@ public interface JobRepository extends JpaRepository<JobModel, Long> {
     @Query(value = "SELECT d.* FROM jobs d WHERE d.job_location = :location", nativeQuery = true)
     List<JobModel> findNearbyJobs(@Param("location") String location);
 
-    @Query(value = "SELECT d.* FROM jobs d WHERE d.payment_status = :payment_status", nativeQuery = true)
-    List<JobModel> findPaidJobs(@Param("payment_status") String payment_status);
+    @Query(value = "SELECT d.* FROM jobs d WHERE d.payment_status = :payment_status AND d.job_status = :job_status", nativeQuery = true)
+    List<JobModel> findPaidAndAvailableJobs(@Param("payment_status") String payment_status, @Param("job_status") String job_status);
 
     @Query(value = "SELECT d.* FROM jobs", nativeQuery = true)
     List<JobModel> findAllJobs();

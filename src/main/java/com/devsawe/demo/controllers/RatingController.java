@@ -24,6 +24,9 @@ public class RatingController {
     @Autowired
     private UserRatingRepository userRatingRepository;
 
+    @Autowired
+    private JobRepository jobRepository;
+
 
     @PostMapping("/rating")
     public ResponseEntity<?> submitRating(@Valid @RequestBody UserRatingModel userRatingModel) {

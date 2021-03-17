@@ -1,12 +1,12 @@
 package com.devsawe.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Value;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Entity
 @Table(name = "rating")
@@ -20,6 +20,9 @@ public class UserRatingModel {
     private Long userId;
 
     @NotNull
+    private String jobId;
+
+    @NotNull
     private Double rating;
 
     @NotNull
@@ -31,6 +34,14 @@ public class UserRatingModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user1;
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
 
     public String getComment() {
         return Comment;

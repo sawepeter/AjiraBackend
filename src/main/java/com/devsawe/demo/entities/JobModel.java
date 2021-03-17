@@ -35,7 +35,7 @@ public class JobModel extends AuditModel {
     @NotNull
     private String jobType;
 
-    private String status;
+    private String job_status;
 
     @NotNull
     private String jobDeadline;
@@ -49,7 +49,7 @@ public class JobModel extends AuditModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
-
+    
     public String getFavourite() {
         return favourite;
     }
@@ -66,12 +66,12 @@ public class JobModel extends AuditModel {
         this.payment_status = payment_status;
     }
 
-    public String getStatus() {
-        return status;
+    public String getJob_status() {
+        return job_status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setJob_status(String job_status) {
+        this.job_status = job_status;
     }
 
     public Long getId() {

@@ -27,7 +27,6 @@ public class WorkerController {
     @Autowired
     private UserRepository userRepository;
 
-
     //create a worker skills profile
     @PostMapping("/employee/new")
     public ResponseEntity<?> createWorkerProfile(@Valid @RequestBody WorkerProfile workerProfile) {
@@ -36,12 +35,13 @@ public class WorkerController {
                 (CustomUserDetails) SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
         workerProfile.setUserId(customUserDetails.getId());
+        workerProfile.setEarnings(0.00);
         String userType = customUserDetails.getUserType();
         //check if user is employee here
         if (userType.equalsIgnoreCase("employee")) {
             workersRepository.save(workerProfile);
             resp.put("state", "success");
-            resp.put("msg", "Worker Created successfully");
+            resp.put("msg", "Worker Profile Created");
             return ResponseEntity.ok(resp);
         }
         resp.put("state", "Failed");
@@ -55,6 +55,5 @@ public class WorkerController {
         List<WorkerProfile> workerProfiles = workersRepository.findAll();
         return ResponseEntity.ok(workerProfiles);
     }
-
 
 }

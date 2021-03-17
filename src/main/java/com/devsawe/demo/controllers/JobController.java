@@ -1,12 +1,13 @@
 package com.devsawe.demo.controllers;
 
 import com.devsawe.demo.authentication.CustomUserDetails;
+import com.devsawe.demo.entities.EmployeeEarningModel;
 import com.devsawe.demo.entities.JobApplicationModel;
 import com.devsawe.demo.entities.JobModel;
-import com.devsawe.demo.repositories.ApplicationRepository;
-import com.devsawe.demo.repositories.JobRepository;
-import com.devsawe.demo.repositories.UserRepository;
+import com.devsawe.demo.entities.WorkerProfile;
+import com.devsawe.demo.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +28,12 @@ public class JobController {
     private ApplicationRepository applicationRepository;
 
     @Autowired
+    private EarningsRepository earningsRepository;
+
+    @Autowired
+    private WorkersRepository workersRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
     //works creates jobs list for the currently logged in user.
@@ -38,7 +45,7 @@ public class JobController {
                         .getAuthentication().getPrincipal();
         jobModel.setEmployerId(customUserDetails.getId());
         jobModel.setEmployerName(customUserDetails.getUserName());
-        jobModel.setStatus("pending");
+        jobModel.setJob_status("Available");
         jobModel.setPayment_status("unpaid");
         jobModel.setFavourite("false");
         //check if user is employee here
@@ -61,9 +68,32 @@ public class JobController {
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
         applicationModel.setUserId(customUserDetails.getId());
+        applicationModel.setWorker_name(customUserDetails.getUserName());
+        applicationModel.setApplication_status("pending");
         //check if user is employee here
         if (customUserDetails.getUserType().equalsIgnoreCase("employee")) {
             applicationRepository.save(applicationModel);
+            resp.put("state", "success");
+            resp.put("msg", "Job applied successfully");
+            return ResponseEntity.ok(resp);
+        }
+        resp.put("state", "Failed");
+        resp.put("msg", "UserType lacks permissions");
+        return ResponseEntity.ok(resp);
+    }
+
+    //request to add worker earnings
+    @PostMapping("/earnings")
+    public ResponseEntity<?> updateWorkerEarnings(@Valid @RequestBody EmployeeEarningModel employeeEarningModel) {
+        Map<String, String> resp = new HashMap<>();
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();
+        employeeEarningModel.setUserId(customUserDetails.getId());
+        employeeEarningModel.setEmployee_name(customUserDetails.getUserName());
+        //check if user is employee here
+        if (customUserDetails.getUserType().equalsIgnoreCase("employee")) {
+            earningsRepository.save(employeeEarningModel);
             resp.put("state", "success");
             resp.put("msg", "Job applied successfully");
             return ResponseEntity.ok(resp);
@@ -99,28 +129,30 @@ public class JobController {
         return ResponseEntity.ok(resp);
     }
 
-    @PutMapping("/my-jobs/completed/{id}")
-    public ResponseEntity<?> completed(@PathVariable long id) {
+    //update the worker total earnings
+    @PutMapping("/worker/earnings/{id}")
+    public ResponseEntity<?> updateEarnings(@PathVariable long id) {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal();
-        JobApplicationModel applicationModel = applicationRepository.findById(id).orElse(null);
-        if (applicationModel == null) {
+        WorkerProfile workerProfile = workersRepository.findById(id).orElse(null);
+        if (workerProfile == null) {
             resp.put("state", "danger");
             resp.put("msg", "The user does not a applications with that id");
             return ResponseEntity.ok(resp);
         }
-        applicationModel.setStatus("Completed");
-        applicationModel.setUserId(customUserDetails.getId());
-        applicationRepository.save(applicationModel);
+        workerProfile.setUserId(customUserDetails.getId());
+        workerProfile.setEarnings(jobRepository.totalEarnings(customUserDetails.getId()));
+        workersRepository.save(workerProfile);
         resp.put("state", "success");
         resp.put("msg", "state updated successfully");
         return ResponseEntity.ok(resp);
     }
 
+    //Update the Job Status depending with the action
     @PutMapping("/my-jobs/status/{id}")
-    public ResponseEntity<?> visibleJob(@PathVariable long id) {
+    public ResponseEntity<?> visibleJob(@PathVariable long id,@RequestParam(value = "status") String status) {
         Map<String, String> resp = new HashMap<>();
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext()
@@ -131,7 +163,7 @@ public class JobController {
             resp.put("msg", "No job found with that id");
             return ResponseEntity.ok(resp);
         }
-        jobModel.setStatus("done");
+        jobModel.setJob_status(status);
         //jobModel.setEmployerId(customUserDetails.getId());
         jobRepository.save(jobModel);
         resp.put("state", "success");
@@ -152,7 +184,6 @@ public class JobController {
            resp.put("msg", "No Job found with that id");
            return ResponseEntity.ok(resp);
        }
-
        jobModel.setPayment_status("paid");
        jobRepository.save(jobModel);
        resp.put("state", "Success");
@@ -160,6 +191,7 @@ public class JobController {
        return ResponseEntity.ok(resp);
     }
 
+    //admin or job automatically revokes it after a certain duration
     @PutMapping("/my-jobs/revoke/{id}")
     public ResponseEntity<?> revokeJobPaymentStatus(@PathVariable long id){
         Map<String, String> resp = new HashMap<>();
@@ -172,7 +204,6 @@ public class JobController {
             resp.put("msg", "No Job found with that id");
             return ResponseEntity.ok(resp);
         }
-
         jobModel.setPayment_status("unpaid");
         jobRepository.save(jobModel);
         resp.put("state", "Success");
@@ -192,11 +223,29 @@ public class JobController {
             resp.put("msg", "No Job found with that id");
             return ResponseEntity.ok(resp);
         }
-
         jobModel.setFavourite("true");
         jobRepository.save(jobModel);
         resp.put("state", "Success");
         resp.put("msg", "Job added to favourite");
+        return ResponseEntity.ok(resp);
+    }
+
+    @PutMapping("/applications/status/{id}")
+    public ResponseEntity<?> updateApplicationStatus(@PathVariable long id){
+        Map<String, String> resp = new HashMap<>();
+        CustomUserDetails customUserDetails = (CustomUserDetails)
+                SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();
+        JobApplicationModel jobApplicationModel = applicationRepository.findById(id).orElse(null);
+        if (jobApplicationModel == null){
+            resp.put("state", "danger");
+            resp.put("msg", "No Job found with that id");
+            return ResponseEntity.ok(resp);
+        }
+        jobApplicationModel.setApplication_status("Approved");
+        applicationRepository.save(jobApplicationModel);
+        resp.put("state", "Success");
+        resp.put("msg", "Job application approved");
         return ResponseEntity.ok(resp);
     }
 
@@ -226,10 +275,11 @@ public class JobController {
         return ResponseEntity.ok(jobModels);
     }
 
-    //get the paid or unpaid changing the params jobs
-    @GetMapping("/paid-jobs")
-    public ResponseEntity<List<JobModel>> PaidJobs(@RequestParam(value = "payment_status") String payment_status){
-        List<JobModel> jobModels = jobRepository.findPaidJobs(payment_status);
+    //get the jobs based on a specific status
+    @GetMapping("/status-jobs")
+    public ResponseEntity<List<JobModel>> getStatusJobs(@RequestParam(value = "payment_status") String payment_status,
+                                                   @RequestParam("job_status") String job_status){
+        List<JobModel> jobModels = jobRepository.findPaidAndAvailableJobs(payment_status,job_status);
         return ResponseEntity.ok(jobModels);
     }
 
@@ -242,12 +292,12 @@ public class JobController {
         return ResponseEntity.ok(jobApplicationModels);
     }
 
-    //get the jobs that have already been marked as complete
-    @GetMapping("/jobs/complete")
+    //get the jobs that have already been marked as approved
+    @GetMapping("/jobs/approved")
     public ResponseEntity<List<JobApplicationModel>> getComplete() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<JobApplicationModel> jobApplicationModels = applicationRepository.findByCompletedStatus(customUserDetails.getId());
+        List<JobApplicationModel> jobApplicationModels = applicationRepository.findApprovedJobs(customUserDetails.getId());
         return ResponseEntity.ok(jobApplicationModels);
     }
     //get jobs
@@ -296,6 +346,12 @@ public class JobController {
     @GetMapping("/JobsNumber")
     public long getAllJobsCount(){
         return jobRepository.countAllBy();
+    }
+
+    //get the average rating of a worker
+    @GetMapping("/averageRating")
+    public double getAverageRating(@RequestParam(value = "worker_id") String worker_id){
+        return jobRepository.averageRating(worker_id);
     }
 
     @GetMapping("/paidJobsNumber")

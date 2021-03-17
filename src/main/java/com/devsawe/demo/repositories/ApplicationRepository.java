@@ -20,14 +20,19 @@ public interface ApplicationRepository extends JpaRepository<JobApplicationModel
     List<JobApplicationModel> findByUserId(Long userId);
 
     @Query(value = "SELECT d.job_id FROM jobs_application d", nativeQuery = true)
-    List<JobApplicationModel> findByJob_id(Long userId);
+    List<JobApplicationModel> findByJob_id(Long job_id);
 
     @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE jobs_application d SET d.status = 'Completed' WHERE d.id = :id", nativeQuery = true)
+    @Query(value = "UPDATE jobs_application d SET d.application_status = 'Approved' WHERE d.id = :id", nativeQuery = true)
     void updateStatus(@Param("id") Long id);
 
-    @Query(value = "SELECT d.* FROM jobs_application d WHERE d.status = 'Completed'", nativeQuery = true)
-    List<JobApplicationModel> findByCompletedStatus(Long userId);
+    @Query(value = "SELECT d.* FROM jobs_application d WHERE d.application_status = 'Approved'", nativeQuery = true)
+    List<JobApplicationModel> findApprovedJobs(Long userId);
+
+    /*//inner join query
+    @Query(value = "SELECT d.* FROM jobs d INNER JOIN jobs_application j on d.id=j.id WHERE d.id = :id", nativeQuery = true);
+    List<JobModel> findAppliedJobs();*/
+
 
 
 
