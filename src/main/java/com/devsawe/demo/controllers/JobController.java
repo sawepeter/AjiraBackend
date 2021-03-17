@@ -95,7 +95,7 @@ public class JobController {
         if (customUserDetails.getUserType().equalsIgnoreCase("employee")) {
             earningsRepository.save(employeeEarningModel);
             resp.put("state", "success");
-            resp.put("msg", "Job applied successfully");
+            resp.put("msg", "Job earning updated");
             return ResponseEntity.ok(resp);
         }
         resp.put("state", "Failed");
@@ -146,7 +146,7 @@ public class JobController {
         workerProfile.setEarnings(jobRepository.totalEarnings(customUserDetails.getId()));
         workersRepository.save(workerProfile);
         resp.put("state", "success");
-        resp.put("msg", "state updated successfully");
+        resp.put("msg", "Worker earnings updated");
         return ResponseEntity.ok(resp);
     }
 
@@ -283,14 +283,14 @@ public class JobController {
         return ResponseEntity.ok(jobModels);
     }
 
-    //get the jobs that have already been applied
+    /*//get the jobs that have already been applied
     @GetMapping("/jobs/Active")
     public ResponseEntity<List<JobApplicationModel>> getActiveJobs() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<JobApplicationModel> jobApplicationModels = applicationRepository.findByUserId(customUserDetails.getId());
         return ResponseEntity.ok(jobApplicationModels);
-    }
+    }*/
 
     //get the jobs that have already been marked as approved
     @GetMapping("/jobs/approved")
@@ -307,17 +307,7 @@ public class JobController {
         return ResponseEntity.ok(jobModels);
     }
 
-    //get the jobs where status = done
-    @GetMapping("/jobs-done")
-    public ResponseEntity<List<JobModel>> jobsApproved() {
-        CustomUserDetails customUserDetails = (CustomUserDetails)
-                SecurityContextHolder.getContext()
-                        .getAuthentication().getPrincipal();
-        List<JobModel> jobModels = jobRepository.findByCompletedStatus();
-        return ResponseEntity.ok(jobModels);
-    }
-
-    //get the todos where status = pending
+   /* //get the todos where status = pending
     @GetMapping("/jobs-pending")
     public ResponseEntity<List<JobModel>> jobsPending() {
         CustomUserDetails customUserDetails = (CustomUserDetails)
@@ -325,22 +315,7 @@ public class JobController {
                         .getAuthentication().getPrincipal();
         List<JobModel> jobModels = jobRepository.findByPendingStatus();
         return ResponseEntity.ok(jobModels);
-    }
-
-    @DeleteMapping("/my-todos/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") long id) {
-        CustomUserDetails customUserDetails = (CustomUserDetails)
-                SecurityContextHolder.getContext()
-                        .getAuthentication().getPrincipal();
-        JobModel jobModel = jobRepository.findById(id).orElse(null);
-
-        if (jobModel == null) {
-            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-        }
-        jobRepository.delete(jobModel);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-
-    }
+    }*/
 
     //Query all jobs count
     @GetMapping("/JobsNumber")

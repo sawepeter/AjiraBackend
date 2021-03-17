@@ -21,20 +21,23 @@ public class EmployeeEarningModel {
 
     private String earnings;
 
-    @Column(name = "job_Id")
     private String job_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "job_Id", nullable = false, insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private JobModel jobModel;
+    private String jobTitle;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "worker_Id", nullable = false, insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
 
     public Long getId() {
         return Id;
@@ -74,14 +77,6 @@ public class EmployeeEarningModel {
 
     public void setJob_id(String job_id) {
         this.job_id = job_id;
-    }
-
-    public JobModel getJobModel() {
-        return jobModel;
-    }
-
-    public void setJobModel(JobModel jobModel) {
-        this.jobModel = jobModel;
     }
 
     public User getUser() {
